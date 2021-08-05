@@ -6,9 +6,11 @@ async function getLessons(req, res) {
 
     const data = await lessons(reqParams.queryParams);
     var lessonArray = await Promise.all(
-        data.map(async (lesson) => (lesson))
+        data.map(async (lesson) => {
+            return lesson
+        })
     );
-    console.log(lessonArray);
+
     res.send(lessonArray);
 }
 
